@@ -98,7 +98,7 @@ function Init(root) {
 
     const x = e.clientX - root.offsetParent.offsetLeft;
     const y = e.clientY;
-    mouse.x = x / window.innerWidth * 2 - 1;
+    mouse.x = (x / window.innerWidth) * 2 - 1;
     mouse.y = -(y / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);

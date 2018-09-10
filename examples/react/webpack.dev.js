@@ -8,16 +8,12 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-
-const port = process.env.PORT || 8000;
 
 module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    path.resolve(__dirname, 'index.js'),
+    // path.resolve(__dirname, 'index.js'),
   ],
 
   output: {
@@ -26,13 +22,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './index.html'),
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({ url: `http://localhost:${port}/` }),
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 
   module: {
     loaders: [
