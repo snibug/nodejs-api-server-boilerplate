@@ -6,15 +6,16 @@
  * https://opensource.org/licenses/MIT.
  */
 
-import builtins from 'rollup-plugin-node-builtins';
-import resolve from 'rollup-plugin-node-resolve';
-import replace from 'rollup-plugin-replace';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
-import postcss from 'rollup-plugin-postcss';
 import filesize from 'rollup-plugin-filesize';
+import builtins from 'rollup-plugin-node-builtins';
+import resolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss';
+import replace from 'rollup-plugin-replace';
+import uglify from 'rollup-plugin-uglify';
 import { minify } from 'uglify-es';
+
 import pkg from './package.json';
 
 const env = process.env.NODE_ENV;
@@ -50,33 +51,6 @@ export default [
   },
 
   {
-    input: 'packages/react.js',
-    external: Object.keys(globals),
-    globals,
-    output: { file: 'dist/react.js', format: 'umd' },
-    name: 'Client',
-    plugins,
-  },
-
-  {
-    input: 'packages/client.js',
-    external: Object.keys(globals),
-    globals,
-    output: { file: 'dist/client.js', format: 'umd' },
-    name: 'Client',
-    plugins,
-  },
-
-  {
-    input: 'packages/react-native.js',
-    external: Object.keys(globals),
-    globals,
-    output: { file: 'dist/react-native.js', format: 'umd' },
-    name: 'ReactNativeClient',
-    plugins,
-  },
-
-  {
     input: 'packages/master.js',
     external: Object.keys(globals),
     globals,
@@ -100,24 +74,6 @@ export default [
     globals,
     output: { file: 'dist/ai.js', format: 'umd' },
     name: 'AI',
-    plugins,
-  },
-
-  {
-    input: 'packages/ai-visualize.js',
-    external: Object.keys(globals),
-    output: { file: 'dist/ai-visualize.js', format: 'umd' },
-    name: 'AIVisualize',
-    globals,
-    plugins,
-  },
-
-  {
-    input: 'packages/ui.js',
-    external: Object.keys(globals),
-    globals,
-    output: { file: 'dist/ui.js', format: 'umd' },
-    name: 'UI',
     plugins,
   },
 
